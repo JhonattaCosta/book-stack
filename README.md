@@ -1,3 +1,5 @@
+[Leia em Português](README-pt_br.md)
+
 # Library Management System
 
 Simple library system developed for learning Clean Architecture, TDD, and DDD.
