@@ -1,6 +1,7 @@
 package dev.bookstack.infrastructure.persistence.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "book")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class BookEntity {
