@@ -29,7 +29,7 @@ public class BookEntity {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-    @Column(nullable = false)
-    private String Isbn;
+    @Column(nullable = false, unique = true)
+    private String isbn;
 
 }
