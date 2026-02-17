@@ -3,10 +3,12 @@ package dev.bookstack.infrastructure.persistence.repositories.book;
 import dev.bookstack.domain.entities.Book;
 import dev.bookstack.domain.repositories.BookRepository;
 import dev.bookstack.infrastructure.persistence.mappers.BookEntityMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class BookRepositoryImpl implements BookRepository {
 
     private final BookJpaRepository repository;
