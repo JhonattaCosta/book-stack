@@ -1,4 +1,4 @@
-package dev.bookstack.application.usecases;
+package dev.bookstack.application.usecases.book;
 
 import dev.bookstack.application.dto.request.CreateBookRequestDto;
 import dev.bookstack.domain.entities.Book;
