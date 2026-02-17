@@ -45,7 +45,7 @@ public class BookMapper {
                 book.getCategory(),
                 book.getCreatedAt(),
                 book.getUpdatedAt(),
-                new Isbn(book.getIsbn().getValue())
+                book.getIsbn().getValue()
 
         );
 

@@ -59,7 +59,7 @@ public class BookMapperTest {
         assertThat(response.category()).isEqualTo(book.getCategory());
         assertThat(response.createdAt()).isEqualTo(book.getCreatedAt());
         assertThat(response.updatedAt()).isEqualTo(book.getUpdatedAt());
-        assertThat(response.isbn().getValue()).isEqualTo(book.getIsbn().getValue());
+        assertThat(response.isbn()).isEqualTo(book.getIsbn().getValue());
 
 
     }
