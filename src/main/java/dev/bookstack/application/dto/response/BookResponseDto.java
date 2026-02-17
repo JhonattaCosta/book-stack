@@ -11,6 +11,6 @@ public record BookResponseDto (
         String category,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
-        Isbn isbn
+        String isbn
 ) {
 }
