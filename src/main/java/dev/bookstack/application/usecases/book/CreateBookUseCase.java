@@ -1,6 +1,7 @@
 package dev.bookstack.application.usecases.book;
 
 import dev.bookstack.application.dto.request.CreateBookRequestDto;
+import dev.bookstack.application.dto.response.BookResponseDto;
 import dev.bookstack.application.mappers.BookMapper;
 import dev.bookstack.domain.entities.Book;
 import dev.bookstack.domain.exceptions.IsbnAlreadyExistsException;
@@ -16,11 +17,12 @@ public class CreateBookUseCase {
         this.repository = repository;
     }
 
-    public Book execute(CreateBookRequestDto request){
+    public BookResponseDto execute(CreateBookRequestDto request){
         if (repository.existByIsbn(request.isbn())){
             throw new IsbnAlreadyExistsException("ISBN already exists try again", "ISBN_ALREADY_EXISTS");
         }
-        return repository.save(BookMapper.toDomain(request));
+
+        return BookMapper.toResponse(repository.save(BookMapper.toDomain(request)));
     }
 
 }

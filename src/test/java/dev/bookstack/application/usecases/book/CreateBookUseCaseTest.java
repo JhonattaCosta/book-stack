@@ -1,6 +1,7 @@
 package dev.bookstack.application.usecases.book;
 
 import dev.bookstack.application.dto.request.CreateBookRequestDto;
+import dev.bookstack.application.dto.response.BookResponseDto;
 import dev.bookstack.domain.entities.Book;
 import dev.bookstack.domain.entities.valueObjects.Isbn;
 import dev.bookstack.domain.exceptions.BookInvalidException;
@@ -40,10 +41,13 @@ public class CreateBookUseCaseTest {
         when(repository.existByIsbn(isbnString)).thenReturn(false);
         when(repository.save(any(Book.class))).thenReturn(createdBook);
 
-        Book result = createBookUseCase.execute(request);
+        BookResponseDto result = createBookUseCase.execute(request);
 
         verify(repository).save(any(Book.class));
-        assertThat(result).isEqualTo(createdBook);
+        assertThat(result.title()).isEqualTo(createdBook.getTitle());
+        assertThat(result.author()).isEqualTo(createdBook.getAuthor());
+        assertThat(result.category()).isEqualTo(createdBook.getCategory());
+        assertThat(result.isbn()).isEqualTo(createdBook.getIsbn().getValue());
     }
 
     @Test
