@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("bookStack/book")
+@RequestMapping("/bookStack/")
 @RequiredArgsConstructor
 public class BookController {
 
@@ -36,32 +36,32 @@ public class BookController {
 
     @GetMapping("/api/books")
     public ResponseEntity<List<BookResponseDto>> findAllBooks(){
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(findAllBookUseCase.execute());
+        return ResponseEntity.ok(findAllBookUseCase.execute());
     }
 
     @GetMapping("/api/books/{id}")
     public ResponseEntity<BookResponseDto> findById (@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.FOUND).body(findBookByIdUseCase.execute(id));
+        return ResponseEntity.ok(findBookByIdUseCase.execute(id));
     }
 
     @GetMapping("/api/books/search/title")
     public ResponseEntity<List<BookResponseDto>> findByTitle (@RequestParam("title") String title){
-        return ResponseEntity.status(HttpStatus.FOUND).body(findBookByTitleUseCase.execute(title));
+        return ResponseEntity.ok(findBookByTitleUseCase.execute(title));
     }
 
     @GetMapping("/api/books/search/author")
     public ResponseEntity<List<BookResponseDto>> findByAuthor (@RequestParam("author") String author){
-        return ResponseEntity.status(HttpStatus.FOUND).body(findBookByAuthorUseCase.execute(author));
+        return ResponseEntity.ok(findBookByAuthorUseCase.execute(author));
     }
 
     @GetMapping("/api/books/search/category")
     public ResponseEntity<List<BookResponseDto>> findByCategory (@RequestParam("category") String category){
-        return ResponseEntity.status(HttpStatus.FOUND).body(findBookByCategoryUseCase.execute(category));
+        return ResponseEntity.ok(findBookByCategoryUseCase.execute(category));
     }
 
     @PatchMapping("/api/books/{id}")
     public ResponseEntity<BookResponseDto> updated (@PathVariable Long id, @RequestBody UpdateBookRequestDto requestDto){
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(updateBookUseCase.execute(id,requestDto));
+        return ResponseEntity.ok(updateBookUseCase.execute(id,requestDto));
     }
 
     @DeleteMapping("/api/books/{id}")
