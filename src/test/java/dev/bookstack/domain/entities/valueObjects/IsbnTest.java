@@ -33,9 +33,9 @@ public class IsbnTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "978-85-325-3078-3", // Com hífens agora deve falhar
-            "978 85 325 3078 3", // Com espaços agora deve falhar
-            "978853253078a"      // Com letras deve falhar
+            "978-85-325-3078-3",
+            "978 85 325 3078 3",
+            "978853253078a"
     })
     void shouldThrowException_WhenValueContainsNonDigits(String input) {
         assertThatThrownBy(() -> new Isbn(input))
