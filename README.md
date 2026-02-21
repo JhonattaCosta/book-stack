@@ -1,64 +1,72 @@
-[Leia em Português](README-pt_br.md)
+# BookStack: Seu Sistema Completo de Gerenciamento de Biblioteca
 
-# Library Management System
 
-Simple library system developed for learning Clean Architecture, TDD, and DDD.
+Este é um projeto de estudos que implementa um sistema de gerenciamento de biblioteca onde administradores podem gerenciar livros, exemplares, usuários e empréstimos, aprofundado em **Clean Architecture**, **Test-Driven Development (TDD)** e **Domain-Driven Design (DDD)**
 
-## About the Project
+## 📚 Documentação de Aprendizado
 
-This is a learning project that implements a library management system where administrators can manage books, copies, users, and loans.
+Durante o desenvolvimento do projeto estou documentando minha evolução, decisões técnicas, dificuldades e aprendizados em formato de journal.
 
-## Features
+👉 [Acompanhar Journal de Desenvolvimento](.journal.md)
 
-- Books CRUD (with search by name, author, and category)
-- Users CRUD
-- Copies Management (physical book copies)
-- Loan System
-- JWT Authentication for administrators
+## Funcionalidades
 
-## Technologies
+- CRUD de Livros (com busca por nome, autor e categoria)
+- CRUD de Usuários
+- Gerenciamento de Exemplares (cópias físicas dos livros)
+- Sistema de Empréstimos
+- Autenticação JWT para administradores
+
+## Tecnologias
 
 - Java 17+
 - Spring Boot 3.x
 - PostgreSQL
 - Docker
 - Flyway (migrations)
-- JUnit 5, Mockito, AssertJ (testing)
+- JUnit 5, Mockito, AssertJ (testes)
 
-## Architecture
+## Arquitetura
 
-The project follows Clean Architecture with the following layers:
+O projeto segue Clean Architecture com as seguintes camadas:
 
-- **domain**: Entities and business rules
-- **application**: Use cases and DTOs
-- **infrastructure**: Technical implementations (JPA, security)
-- **presentation**: REST Controllers
+- **domain**: Entidades e regras de negócio
+- **application**: Casos de uso e DTOs
+- **infrastructure**: Implementações técnicas (JPA, segurança)
+- **presentation**: Controllers REST
 
-## How to Run
+## Como Executar
 
-1. Clone the repository
-2. Configure the `.env`
-3. Start PostgreSQL: `docker-compose up -d`
-4. Run the application: `./mvnw spring-boot:run`
+1. Clone o repositório
+2. Configure o arquivo `.env`
+3. Inicie o PostgreSQL: `docker-compose up -d`
+4. Execute a aplicação: `c`
 
-The API will be available at `http://localhost:8080`
+A  API estará disponível em `http://localhost:8080`
 
-## Tests
+## Testes
 
-Run tests with:
+Execute os testes com:
 ```bash
 ./mvnw test
 ```
 
-## Business Rules
+## Regras de Negócio
 
-- Books can have multiple copies
-- Each copy can be loaned to only one user at a time
-- Loans have a fixed period of 14 days
-- Only administrators access the system
-- Regular users are registered but do not log in
+- Livros podem ter múltiplos exemplares
+- Cada exemplar pode ser emprestado para apenas um usuário por vez
+- Empréstimos têm prazo fixo de 14 dias
+- Apenas administradores acessam o sistema
+- Usuários comuns são cadastrados mas não fazem login
+
+## 💡 Próximos Passos e Melhorias Futuras
+
+Este projeto está em constante evolução. Algumas ideias para futuras melhorias incluem:
+
+- Implementação de um frontend para uma experiência de usuário completa.
+- Integração com serviços de email para notificações de empréstimos.
+- Implementação de testes de integração mais abrangentes.
+
+**Observação**: Este é um projeto em desenvolvimento criado para fins educacionais e portfólio.
 
 
----
-
-**Note**: This is a work-in-progress project created for educational purposes and portfolio.
