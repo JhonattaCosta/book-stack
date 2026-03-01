@@ -15,9 +15,9 @@ public interface UsersRepository {
 
     List<Users> findByName(String name);
 
-    List<Users> findByEmail(String email);
+    Optional<Users> findByEmail(String email);
 
-    List<Users> findByCpf(String cpf);
+    Optional<Users> findByCpf(String cpf);
 
     List<Users> findByIsAdminTrue();
 
@@ -25,8 +25,8 @@ public interface UsersRepository {
 
     void delete (Long id);
 
-    boolean existByEmail(String email);
+    boolean existsByEmail(String email);
 
-    boolean existByCpf(String cpf);
+    boolean existsByCpf(String cpf);
 
 }
