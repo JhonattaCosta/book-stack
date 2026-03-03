@@ -21,7 +21,7 @@ public class Cpf {
             throw new CpfInvalidException("CPF cannot have all digits the same!", "CPF_NOT_HAVE_ALL_DIGITS_SAME");
         }
 
-        validateCpf(value);
+        validaeCpf(value);
 
 
         this.value = value;
@@ -59,7 +59,7 @@ public class Cpf {
         return value;
     }
 
-    public String maskedCpf(){
+    public String getMaskedCpf(){
         return value.replaceAll("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "***.$2.$3-**");
     }
 

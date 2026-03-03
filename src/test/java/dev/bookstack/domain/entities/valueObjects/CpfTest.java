@@ -26,6 +26,15 @@ public class CpfTest {
         assertThat(cpf.getFormattedValue()).isEqualTo(cpfValid);
     }
 
+    @Test
+    void shouldReturnCpfMasked(){
+        String cpfValid = "546.471.429-49";
+        Cpf cpf = new Cpf(cpfValid);
+
+        assertThat(cpf.getMaskedCpf()).isEqualTo("***.471.429-**");
+
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {
             "1234567890",
