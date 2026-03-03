@@ -59,6 +59,10 @@ public class Cpf {
         return value;
     }
 
+    public String maskedCpf(){
+        return value.replaceAll("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "***.$2.$3-**");
+    }
+
     public String getFormattedValue() {
         return value.replaceAll("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4");
     }
