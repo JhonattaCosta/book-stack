@@ -2,7 +2,7 @@ package dev.bookstack.domain.entities.valueObjects;
 
 import dev.bookstack.domain.exceptions.CpfInvalidException;
 
-import java.util.regex.Pattern;
+
 
 public class Cpf {
 
@@ -21,7 +21,7 @@ public class Cpf {
             throw new CpfInvalidException("CPF cannot have all digits the same!", "CPF_NOT_HAVE_ALL_DIGITS_SAME");
         }
 
-        validaeCpf(value);
+        validateCpf(value);
 
 
         this.value = value;
