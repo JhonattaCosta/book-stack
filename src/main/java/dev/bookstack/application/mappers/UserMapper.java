@@ -36,7 +36,7 @@ public class UserMapper {
                 null,
                 false,
                 true,
-                null,
+                LocalDateTime.now(),
                 LocalDateTime.now()
         );
         return user;
