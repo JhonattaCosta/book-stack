@@ -7,6 +7,8 @@ Este é um projeto de estudos que implementa um sistema de gerenciamento de bibl
 
 Durante o desenvolvimento do projeto estou documentando minha evolução, decisões técnicas, dificuldades e aprendizados em formato de journal.
 
+❗(Lembrando que vou escrevendo durante o processo de desenvolvimento e peço para IA resumir e destacar os pontos mais importantes.)❗
+
 👉 [Acompanhar Journal de Desenvolvimento](journal.md)
 
 ## Funcionalidades

@@ -167,3 +167,83 @@ Mas também lembrei que isso foi apenas o começo.
 Agora estou partindo para a Sprint 2.
 
 </details> 
+
+## 🚀 Sprint 2
+
+<details>
+<summary><strong>Sprint 2: Domínio de Usuários</strong></summary>
+
+<br>
+
+### 📌 Decisões Iniciais
+
+Decidi deixar o campo de senha de lado por enquanto para focar no CRUD,
+adicionando futuramente junto com o JWT.
+
+Mantive o mapeamento manual para continuar fixando como cada conversão
+funciona, evitando anotações automáticas por enquanto.
+
+---
+
+### 🏗️ Ordem de Criação
+
+Segui o mesmo padrão da Sprint 1:
+
+- Migration da tabela users com índices para email e CPF
+- Value Objects de CPF e Email com TDD
+- Entidade User no Core com TDD
+- UserEntity (JPA) com anotações de unicidade
+- UserEntityMapper com TDD
+- Repository Interface no Core
+- UserRepositoryImpl com TDD
+- DTOs de Request e Response
+- UserMapper com TDD
+- UseCases com TDD
+- Controller dos endpoints
+
+---
+
+### ⚔️ Desafios
+
+**CPF (Value Object):** A validação do algoritmo dos dois dígitos
+verificadores foi o maior desafio. Pesquisei bastante sobre o cálculo,
+utilizei `for` para somar os valores e calcular o resto. Também precisei
+"limpar" o CPF antes de validar e decidi criar um `getFormattedValue()`
+separado do getter padrão para retornar o CPF formatado sem perder o
+valor original. Também adicionei um `maskedCpf()` para mascarar o CPF
+no response, seguindo LGPD — a lógica ficou no próprio VO por ser uma
+responsabilidade do domínio.
+
+**Email (Value Object):** Comecei com uma validação simples, mas
+pesquisando mais descobri a norma RFC 5322 e decidi implementá-la
+corretamente. Mesmo sendo um sistema simples, preferi validar direito
+pensando em quem for testar a API.
+
+**Repository (2.5):** Cometi o erro de retornar `List` nos métodos
+`findByEmail` e `findByCpf`, sendo que ambos devem ser únicos.
+Corrigi para `Optional` após perceber o erro na implementação.
+
+**Controllers:** Percebi que ao buscar por email ou CPF formatado a
+busca quebra — preciso resolver isso antes de avançar para a próxima
+Sprint.
+
+---
+
+### 🧠 Aprendizados
+
+- Regex está se mostrando cada vez mais necessário — pretendo me
+  aprofundar mais.
+- Sempre verificar a documentação oficial antes de buscar soluções
+  externas.
+- Erros no log de erro geralmente já indicam exatamente o que precisa
+  ser corrigido — vale ler com atenção antes de sair pesquisando.
+
+---
+
+### ✅ Final da Sprint 2
+
+CRUD de usuários funcionando. Os VOs de CPF e Email adicionaram uma
+camada de validação robusta ao domínio. Próximo passo: resolver a
+questão do CPF/email formatado nos endpoints antes de iniciar a Sprint 3.
+
+</details>
