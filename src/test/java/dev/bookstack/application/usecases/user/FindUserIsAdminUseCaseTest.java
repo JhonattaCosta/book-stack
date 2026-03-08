@@ -1,7 +1,6 @@
-package dev.bookstack.application.usecases.users;
+package dev.bookstack.application.usecases.user;
 
 import dev.bookstack.application.dto.response.UserResponseDto;
-import dev.bookstack.application.usecases.user.FindUserByNameUseCase;
 import dev.bookstack.domain.entities.Users;
 import dev.bookstack.domain.entities.valueObjects.Cpf;
 import dev.bookstack.domain.entities.valueObjects.Email;
@@ -20,13 +19,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FindUserByNameUseCaseTest {
+public class FindUserIsAdminUseCaseTest {
 
     @Mock
     private UsersRepository repository;
 
     @InjectMocks
-    private FindUserByNameUseCase findUserByNameUseCase;
+    private FindUserIsAdminUseCase findUserIsAdminUseCase;
 
     String emailString = "test@test.com";
     Email email = new Email(emailString);
@@ -38,20 +37,20 @@ public class FindUserByNameUseCaseTest {
     Cpf cpf1 = new Cpf(cpfString);
 
     @Test
-    void shouldFindUserByName(){
+    void shouldFindUserWhenIsAdmin(){
         List<Users> domainUsers = Arrays.asList(
-                new Users(1L, "Jhonatta", email, cpf,false,true, LocalDateTime.now(),LocalDateTime.now()),
-                new Users(2L,"Jhony", email1,cpf1,false,true,LocalDateTime.now(),LocalDateTime.now())
+                new Users(1L, "Jhonatta", email, cpf,true,true, LocalDateTime.now(),LocalDateTime.now()),
+                new Users(2L,"Jhony", email1,cpf1,true,true,LocalDateTime.now(),LocalDateTime.now())
         );
 
         List<UserResponseDto> responseList = Arrays.asList(
-                new UserResponseDto(1L, "Jhonatta", emailString, cpfString,false,true, LocalDateTime.now(),LocalDateTime.now()),
-                new UserResponseDto(2L,"Jhony", emailString1,cpfString1,false,true,LocalDateTime.now(),LocalDateTime.now())
+                new UserResponseDto(1L, "Jhonatta", emailString, cpfString,true,true, LocalDateTime.now(),LocalDateTime.now()),
+                new UserResponseDto(2L,"Jhony", emailString1,cpfString1,true,true,LocalDateTime.now(),LocalDateTime.now())
         );
 
-        when(repository.findByName("Jhon")).thenReturn(domainUsers);
+        when(repository.findByIsAdminTrue()).thenReturn(domainUsers);
 
-        List<UserResponseDto> result = findUserByNameUseCase.execute("Jhon");
+        List<UserResponseDto> result = findUserIsAdminUseCase.execute();
 
         assertThat(result.size()).isEqualTo(responseList.size());
         assertThat(result.get(0).name()).isEqualTo(responseList.get(0).name());

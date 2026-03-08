@@ -1,7 +1,6 @@
-package dev.bookstack.application.usecases.users;
+package dev.bookstack.application.usecases.user;
 
 import dev.bookstack.application.dto.response.UserResponseDto;
-import dev.bookstack.application.usecases.user.FindUserByIdUseCase;
 import dev.bookstack.domain.entities.Users;
 import dev.bookstack.domain.entities.valueObjects.Cpf;
 import dev.bookstack.domain.entities.valueObjects.Email;

@@ -1,7 +1,6 @@
-package dev.bookstack.application.usecases.users;
+package dev.bookstack.application.usecases.user;
 
 import dev.bookstack.application.dto.response.UserResponseDto;
-import dev.bookstack.application.usecases.user.FindUserIsActiveUseCase;
 import dev.bookstack.domain.entities.Users;
 import dev.bookstack.domain.entities.valueObjects.Cpf;
 import dev.bookstack.domain.entities.valueObjects.Email;
@@ -20,12 +19,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FindUserIsActiveUseCaseTest {
+public class FindUserByNameUseCaseTest {
+
     @Mock
     private UsersRepository repository;
 
     @InjectMocks
-    private FindUserIsActiveUseCase findUserIsActiveUseCase;
+    private FindUserByNameUseCase findUserByNameUseCase;
 
     String emailString = "test@test.com";
     Email email = new Email(emailString);
@@ -37,7 +37,7 @@ public class FindUserIsActiveUseCaseTest {
     Cpf cpf1 = new Cpf(cpfString);
 
     @Test
-    void shouldFindUserWhenIsAdmin(){
+    void shouldFindUserByName(){
         List<Users> domainUsers = Arrays.asList(
                 new Users(1L, "Jhonatta", email, cpf,false,true, LocalDateTime.now(),LocalDateTime.now()),
                 new Users(2L,"Jhony", email1,cpf1,false,true,LocalDateTime.now(),LocalDateTime.now())
@@ -48,12 +48,13 @@ public class FindUserIsActiveUseCaseTest {
                 new UserResponseDto(2L,"Jhony", emailString1,cpfString1,false,true,LocalDateTime.now(),LocalDateTime.now())
         );
 
-        when(repository.findByIsActiveTrue()).thenReturn(domainUsers);
+        when(repository.findByName("Jhon")).thenReturn(domainUsers);
 
-        List<UserResponseDto> result = findUserIsActiveUseCase.execute();
+        List<UserResponseDto> result = findUserByNameUseCase.execute("Jhon");
 
         assertThat(result.size()).isEqualTo(responseList.size());
         assertThat(result.get(0).name()).isEqualTo(responseList.get(0).name());
 
     }
+
 }

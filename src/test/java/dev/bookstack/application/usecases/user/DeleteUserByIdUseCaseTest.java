@@ -1,6 +1,5 @@
-package dev.bookstack.application.usecases.users;
+package dev.bookstack.application.usecases.user;
 
-import dev.bookstack.application.usecases.user.DeleteUserByIdUseCase;
 import dev.bookstack.domain.entities.Users;
 import dev.bookstack.domain.entities.valueObjects.Cpf;
 import dev.bookstack.domain.entities.valueObjects.Email;
